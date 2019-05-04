@@ -8,7 +8,7 @@ Turtle::Turtle(){
 	sprite.setTexture(texture);
 	sprite.setTextureRect(sf::IntRect(0, 0, 350, 237));
 
-	sprite.setPosition(60, 190);
+	sprite.setPosition(20, 190);
 	sprite.setScale(0.2, 0.2);
 }
 
@@ -18,21 +18,19 @@ int Turtle::defMove() {
 	energy -= 2;
 	int randNum = defNum();
 	if (randNum >= 1 && randNum <= 5) {
-		return 30;
+		return 3 * mult;
 	}
 	else if (randNum >= 6 && randNum <= 7) {
-		return -90;
+		return -9 * mult;
 	}
 	else{
-		return 10;
+		return 1 * mult;
 	}
 }
 
 void Turtle::moveToPoint(float x, float y, float time) {
-	//if (getSprite().getPosition().x < x) {
-		setCurrentFrame(0.005*time);
-		if (getCurrentFrame() > 1) { setCurrentFrame(0); }
-		getSprite().setTextureRect(sf::IntRect(350 * (int)getCurrentFrame(), 0, 350, 237));
+		currentFrame += 0.005*time;
+		if (currentFrame > 1) { currentFrame = 0; }
+		sprite.setTextureRect(sf::IntRect(350 * (int)getCurrentFrame(), 0, 350, 237));
 		moveSprite(0.2*time, 0);
-	//}
 }

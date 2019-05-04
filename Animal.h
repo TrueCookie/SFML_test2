@@ -1,25 +1,22 @@
 #pragma once
 #include <SFML/Graphics.hpp>
-#include <string>
+#include "Object.h"
 
 using namespace sf;
-class Animal{
+class Animal : public Object{
 protected:
-	Texture texture;
-	Sprite sprite;
-	float currentFrame;
 	int energy;
-	std::string type;
 	bool sleepFlag;
 	int targetPos;
 	bool moveFlag;
-	//int delta;
-
+	
 public:
+	const int mult = 5;
+	int delta;
 	Animal();
 	~Animal();
-	void setTargetPos(int val);
-	int getTargetPos();
+	void setTargetPos(int val);//
+	int getTargetPos();//
 	bool isMovin();
 	void setMoveFlag(bool val);
 	int defNum();
@@ -28,13 +25,9 @@ public:
 	int getEnergy();
 	bool isSleep();
 	void getUp();
-	std::string getType();
 	bool isOut();
 	void eatSnack();
 	void bite();
-	Sprite getSprite();
 	void moveSprite(float x, float y);
-	void setCurrentFrame(float num);
-	float getCurrentFrame();
 	virtual void moveToPoint(float x, float y, float time) = 0;
 };

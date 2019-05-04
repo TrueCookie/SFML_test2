@@ -6,7 +6,6 @@ using namespace sf;
 Animal::Animal() {
 	energy = 20;
 	sleepFlag = false;
-	currentFrame = 0;
 	targetPos = 0;
 	moveFlag = false;
 }
@@ -54,10 +53,6 @@ int Animal::getEnergy() {
 	return energy;
 }
 
-std::string Animal::getType() {
-	return type;
-}
-
 void Animal::eatSnack() {
 	if (energy >= 15) {
 		energy = 20;
@@ -70,18 +65,6 @@ void Animal::bite() {
 	energy -= 10;
 }
 
-Sprite Animal::getSprite() {
-	return sprite;
-}
-
 void Animal::moveSprite(float x, float y) {
 	sprite.move(x, y);
-}
-
-void Animal::setCurrentFrame(float num) {
-	currentFrame += num;
-}
-
-float Animal::getCurrentFrame() {
-	return currentFrame;
 }
